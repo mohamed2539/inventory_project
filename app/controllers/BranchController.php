@@ -59,7 +59,14 @@ class BranchController extends BaseController {
     public function delete() {
         $this->validateRequest('POST');
 
-        $id = $_POST['id'];
+        // ✅ استقبال `id` من `JSON` بدلاً من `$_POST`
+        $data = json_decode(file_get_contents("php://input"), true);
+        $id = $data['id'] ?? null;
+
+        if (!$id) {
+            $this->jsonResponse(["error" => "معرّف الفرع غير موجود!"], 400);
+            return;
+        }
 
         if ($this->branchModel->softDeleteBranch($id)) {
             $this->jsonResponse(["message" => "تم حذف الفرع بنجاح!"]);
@@ -67,6 +74,21 @@ class BranchController extends BaseController {
             $this->jsonResponse(["error" => "خطأ في الحذف!"], 500);
         }
     }
+
+
+
+
+    /*public function delete() {
+        $this->validateRequest('POST');
+
+        $id = $_POST['id'];
+
+        if ($this->branchModel->softDeleteBranch($id)) {
+            $this->jsonResponse(["message" => "تم حذف الفرع بنجاح!"]);
+        } else {
+            $this->jsonResponse(["error" => "خطأ في الحذف!"], 500);
+        }
+    }*/
 
 
     public function getRecent() {

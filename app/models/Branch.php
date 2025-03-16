@@ -38,11 +38,22 @@ class Branch {
     }
 
 
-    public function getRecentBranches($limit = 20) {
+/*    public function ($limit = 20) {
         $stmt = $this->db->prepare("SELECT * FROM branches WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT ?");
         $stmt->execute([$limit]);
         return $stmt->fetchAll();
+
+    }*/
+
+    public function getRecentBranches($limit = 20) {
+        $stmt = $this->db->prepare("SELECT * FROM branches WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT :limit");
+        $stmt->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+
 
 
 }
