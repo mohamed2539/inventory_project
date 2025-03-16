@@ -26,5 +26,6 @@
 </div>
 
 <script src="../../../assets/js/branch.js"></script>
+<script src="../../../assets/js/ui.js"></script>
 </body>
 </html>
