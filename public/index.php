@@ -10,6 +10,7 @@ require_once '../app/models/Transaction.php';
 require_once '../app/controllers/BranchController.php';
 require_once '../app/controllers/SupplierController.php';
 require_once '../app/controllers/MaterialController.php';
+require_once '../app/controllers/TransactionController.php';//transaction
 
 $controllerName = $_GET['controller'] ?? null;
 $action = $_GET['action'] ?? null;
@@ -28,6 +29,8 @@ if ($controllerName === 'branch') {
     $controller = new SupplierController();
 } elseif ($controllerName === 'material') {
     $controller = new MaterialController();
+} elseif ($controllerName === 'transaction') {
+    $controller = new TransactionController();
 } else {
     http_response_code(400);
     echo json_encode(["error" => "Invalid Controller"]);

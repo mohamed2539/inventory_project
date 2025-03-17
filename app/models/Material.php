@@ -114,6 +114,20 @@ class Material {
 
 
 
+    public function recordTransaction($material_id, $user_id, $type, $quantity) {
+        $stmt = $this->db->prepare("INSERT INTO transactions (material_id, user_id, type, quantity) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$material_id, $user_id, $type, $quantity]);
+    }
+
+
+
+/*    public function searchMaterials($query) {
+        $stmt = $this->db->prepare("SELECT id, code, name, unit, quantity, price FROM materials
+                                WHERE name LIKE ? OR code LIKE ? OR unit LIKE ?
+                                ORDER BY name ASC LIMIT 20");
+        $stmt->execute(["%$query%", "%$query%", "%$query%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }*/
 
 
 
