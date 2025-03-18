@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,13 @@
     <link href="../../../assets/css/master.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body class="bg-gray-100 p-6">
+<body class="bg-gray-100 p-6">-->
+<?php include '../layouts/header.php'; ?>
 
+<div class="wrapper">
+    <?php include '../layouts/sidebar.php'; ?>
+    <div class="main-content">
+        <h1 class="text-2xl font-bold mb-4">إضافة فرع جديد</h1>
 <!-- ✅ نموذج إضافة فرع جديد -->
 <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
     <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">إضافة فرع جديد</h2>
@@ -144,7 +149,11 @@
         </form>
     </div>
 </div>
-<script src="../../../assets/js/ui.js"></script>
+</div>
+</div>
+<?php include '../layouts/footer.php'; ?>
+
+<!--<script src="../../../assets/js/ui.js"></script>
 <script src="../../../assets/js/branch.js"></script>
 </body>
-</html>
+</html>-->
